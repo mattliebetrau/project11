@@ -25,5 +25,7 @@
   <%= @movie.is_3d %>
 </p>
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_movie_path(@movie) %> |
+  <%= link_to 'Back', movies_path %>
+<% end %>

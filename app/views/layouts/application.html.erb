@@ -13,6 +13,17 @@
     <li><%= link_to 'About', about_path %></li>
     <li><%= link_to 'Movies Directory', movies_path %></li>
   </ul>
+  <% if user_signed_in? %>
+    <li>Signed in in as <%= current_user.email %></li>
+    <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+  <% else %>
+    <li><%= link_to "Sign In", sign_in_path %></li>
+  <% end %>
+  <% flash.each do |type, message| %>
+    <div class="<%= type %>">
+      <p><%= message %></p>
+    </div>
+  <% end %>
   <div class="container">
     <%= yield %>
   </div>
